@@ -62,7 +62,7 @@ async def upload_csv(file: UploadFile = File(...)):
 
         contacts = []
         for domain in df.iloc[:, 0]:
-            query = f"SELECT FirstName, LastName, Email, Title FROM Contact WHERE Email LIKE '%@{domain}'"
+            query = f"SELECT FirstName, LastName, Email, Title FROM Contact WHERE Email LIKE '%@{domain}' LIMIT 5"
             result = sf.query(query)
             
             for record in result['records']:
